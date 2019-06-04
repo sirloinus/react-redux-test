@@ -20,8 +20,8 @@ const defaultState = {
 
 const greetingReducer = (state = defaultState, action) => {
   switch(action.type) {
-    case 'GREET_ME':
-      return { ...state, greeting: 'hi amalie'};
+    case 'GREET_NAME':
+      return { ...state, greeting: `hi ${action.name}`};
     case 'GREET_WORLD':
       return { ...state, greeting: 'hello world'};
     default:
@@ -31,8 +31,11 @@ const greetingReducer = (state = defaultState, action) => {
 
 const store = createStore(greetingReducer);
 
+const name = 'amalie'
+
 store.dispatch({
-  type: 'GREET_ME'
+  type: 'GREET_NAME',
+  name
 })
 
 console.log(store.getState())
